@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		50C100A81A16448A004F146D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C100A71A16448A004F146D /* main.cpp */; };
+		50C100AF1A1644FF004F146D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C100AE1A1644FF004F146D /* OpenGL.framework */; };
+		50C100B11A164505004F146D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C100B01A164505004F146D /* Cocoa.framework */; };
+		50C100B31A16450D004F146D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C100B21A16450D004F146D /* GLUT.framework */; };
+		50C100C01A16578E004F146D /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C100BB1A16578E004F146D /* camera.cpp */; };
+		50C100C11A16578E004F146D /* Trackball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C100BE1A16578E004F146D /* Trackball.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +28,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50C00A331A59630400C6A95F /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
+		50C00A361A5967CB00C6A95F /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		50C00A391A596DD600C6A95F /* lighting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lighting.h; sourceTree = "<group>"; };
+		50C00A3C1A59964000C6A95F /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
+		50C00A3F1A59BA6600C6A95F /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		50C100A41A16448A004F146D /* 3dScene */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 3dScene; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C100A71A16448A004F146D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		50C100AE1A1644FF004F146D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		50C100B01A164505004F146D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		50C100B21A16450D004F146D /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		50C100BB1A16578E004F146D /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera.cpp; sourceTree = "<group>"; };
+		50C100BC1A16578E004F146D /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
+		50C100BD1A16578E004F146D /* fshill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fshill.h; sourceTree = "<group>"; };
+		50C100BE1A16578E004F146D /* Trackball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trackball.cpp; sourceTree = "<group>"; };
+		50C100BF1A16578E004F146D /* Trackball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trackball.h; sourceTree = "<group>"; };
+		50EEC8FB1A5C5EB600D62835 /* animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animation.h; sourceTree = "<group>"; };
+		50F277F31A588A61007A780E /* materials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = materials.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C100B31A16450D004F146D /* GLUT.framework in Frameworks */,
+				50C100B11A164505004F146D /* Cocoa.framework in Frameworks */,
+				50C100AF1A1644FF004F146D /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +64,9 @@
 		50C1009B1A16448A004F146D = {
 			isa = PBXGroup;
 			children = (
+				50C100B21A16450D004F146D /* GLUT.framework */,
+				50C100B01A164505004F146D /* Cocoa.framework */,
+				50C100AE1A1644FF004F146D /* OpenGL.framework */,
 				50C100A61A16448A004F146D /* 3dScene */,
 				50C100A51A16448A004F146D /* Products */,
 			);
@@ -57,7 +83,19 @@
 		50C100A61A16448A004F146D /* 3dScene */ = {
 			isa = PBXGroup;
 			children = (
+				50C100BB1A16578E004F146D /* camera.cpp */,
+				50C100BC1A16578E004F146D /* camera.h */,
+				50C100BD1A16578E004F146D /* fshill.h */,
+				50C100BE1A16578E004F146D /* Trackball.cpp */,
+				50C100BF1A16578E004F146D /* Trackball.h */,
 				50C100A71A16448A004F146D /* main.cpp */,
+				50F277F31A588A61007A780E /* materials.h */,
+				50C00A331A59630400C6A95F /* scene.h */,
+				50C00A361A5967CB00C6A95F /* util.h */,
+				50C00A391A596DD600C6A95F /* lighting.h */,
+				50C00A3C1A59964000C6A95F /* menu.h */,
+				50C00A3F1A59BA6600C6A95F /* globals.h */,
+				50EEC8FB1A5C5EB600D62835 /* animation.h */,
 			);
 			path = 3dScene;
 			sourceTree = "<group>";
@@ -118,7 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C100C01A16578E004F146D /* camera.cpp in Sources */,
 				50C100A81A16448A004F146D /* main.cpp in Sources */,
+				50C100C11A16578E004F146D /* Trackball.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +272,7 @@
 				50C100AD1A16448A004F146D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
