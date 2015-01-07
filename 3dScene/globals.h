@@ -1,3 +1,6 @@
+CTrackball trackball;
+Camera camera;
+
 bool useManyPolygons = true;
 bool enableSpotlight = true;
 bool enableLightbulb = true;

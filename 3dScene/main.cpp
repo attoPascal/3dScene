@@ -9,10 +9,8 @@
 #include "freeglut.h"
 #endif
 
-#include "Trackball.h"
 #include "camera.h"
-#include "fshill.h"
-
+#include "Trackball.h"
 #include "globals.h"
 #include "materials.h"
 #include "scene.h"
@@ -22,30 +20,6 @@
 
 const GLsizei WINDOW_WIDTH = 400;
 const GLsizei WINDOW_HEIGHT = 400;
-
-CTrackball trackball;
-Camera camera;
-
-void timer(int iteration) {
-    if (animate) {
-        if (iteration == 0) {
-            prepareAnimation();
-        }
-        
-        doAnimation();
-        
-        // stop animation after some iterations
-        if (iteration > 145) {
-            animate = false;
-            resetAnimation();
-        }
-        
-        glutPostRedisplay();
-        glutTimerFunc(50, timer, iteration + 1);
-    } else {
-        glutTimerFunc(500, timer, 0);
-    }
-}
 
 void handleMouseMotion(int x, int y) {
     trackball.tbMotion(x, y);
@@ -66,6 +40,79 @@ void reshape(int width, int height) {
     
     glViewport(0, 0, size, size);  // Largest possible square
     trackball.tbReshape(width, height);
+}
+
+void keyboard(unsigned char key, int x, int y) {
+    switch (key) {
+        case 'p':
+            chooseMenuOption(USE_MANY_POLYGONS);
+            break;
+        case '+':
+            chooseMenuOption(INCREASE_SPOT_EXPONENT);
+            break;
+        case '-':
+            chooseMenuOption(DECREASE_SPOT_EXPONENT);
+            break;
+        case ',':
+            chooseMenuOption(INCREASE_SPOT_CUTOFF);
+            break;
+        case '.':
+            chooseMenuOption(DECREASE_SPOT_CUTOFF);
+            break;
+        case 'w':
+            chooseMenuOption(CAMERA_SLIDE_FORWARD);
+            break;
+        case 's':
+            chooseMenuOption(CAMERA_SLIDE_BACKWARD);
+            break;
+        case 'a':
+            chooseMenuOption(CAMERA_SLIDE_LEFT);
+            break;
+        case 'd':
+            chooseMenuOption(CAMERA_SLIDE_RIGHT);
+            break;
+        case 'r':
+            chooseMenuOption(CAMERA_PITCH_UP);
+            break;
+        case 'f':
+            chooseMenuOption(CAMERA_PITCH_DOWN);
+            break;
+        case 'q':
+            chooseMenuOption(CAMERA_YAW_LEFT);
+            break;
+        case 'e':
+            chooseMenuOption(CAMERA_YAW_RIGHT);
+            break;
+        case 'x':
+            chooseMenuOption(CAMERA_ROLL_LEFT);
+            break;
+        case 'c':
+            chooseMenuOption(CAMERA_ROLL_RIGHT);
+            break;
+        default:
+            break;
+    }
+}
+
+void timer(int iteration) {
+    if (animate) {
+        if (iteration == 0) {
+            prepareAnimation();
+        }
+        
+        doAnimation();
+        
+        // stop animation after some iterations
+        if (iteration > 145) {
+            animate = false;
+            resetAnimation();
+        }
+        
+        glutPostRedisplay();
+        glutTimerFunc(50, timer, iteration + 1);
+    } else {
+        glutTimerFunc(500, timer, 0);
+    }
 }
 
 void traverse(SceneNode* root) {
@@ -92,43 +139,15 @@ void traverse(SceneNode* root) {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
     
-    gluLookAt(0, 10, 30, 0, 10, 0, 0, 1, 0); // camera is on the z-axis
+    camera.update();
     trackball.tbMatrix();
-    
-    //camera.set(0, 10, 30, 0, 10, 0, 0, 1, 0);
     
     setSpotlight();
     setLightbulb();
     traverse(&room);
     
     glutSwapBuffers();
-}
-
-void keyboard(unsigned char key, int x, int y) {
-    switch (key) {
-        case 'd':
-            chooseMenuOption(USE_MANY_POLYGONS);
-            break;
-        case '+':
-            chooseMenuOption(INCREASE_SPOT_EXPONENT);
-            break;
-        case '-':
-            chooseMenuOption(DECREASE_SPOT_EXPONENT);
-            break;
-        case ',':
-            chooseMenuOption(INCREASE_SPOT_CUTOFF);
-            break;
-        case '.':
-            chooseMenuOption(DECREASE_SPOT_CUTOFF);
-            break;
-        case 'w':
-            camera.slide(1.0, 10.0, 100.0);
-            glutPostRedisplay();
-        default:
-            break;
-    }
 }
 
 void init() {
@@ -144,6 +163,8 @@ void init() {
     gluPerspective(120, 1, 1, 200);
     
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    camera.set(0, 10, 30, 0, 10, 0, 0, 1, 0);
     
     initMenu();
     initSceneNodes();

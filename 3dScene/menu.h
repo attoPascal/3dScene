@@ -31,7 +31,17 @@ enum MenuOption {
     TEAPOT_SHININESS_NONE,
     TEAPOT_SHININESS_HALF,
     TEAPOT_SHININESS_FULL,
-    START_ANIMATION
+    START_ANIMATION,
+    CAMERA_SLIDE_FORWARD,
+    CAMERA_SLIDE_BACKWARD,
+    CAMERA_SLIDE_LEFT,
+    CAMERA_SLIDE_RIGHT,
+    CAMERA_PITCH_UP,
+    CAMERA_PITCH_DOWN,
+    CAMERA_YAW_LEFT,
+    CAMERA_YAW_RIGHT,
+    CAMERA_ROLL_LEFT,
+    CAMERA_ROLL_RIGHT
 };
 
 void chooseMenuOption(int option) {
@@ -150,6 +160,36 @@ void chooseMenuOption(int option) {
             break;
         case START_ANIMATION:
             animate = true;
+            break;
+        case CAMERA_SLIDE_FORWARD:
+            camera.slide(0.0, 0.0, -5.0);
+            break;
+        case CAMERA_SLIDE_BACKWARD:
+            camera.slide(0.0, 0.0, 5.0);
+            break;
+        case CAMERA_SLIDE_LEFT:
+            camera.slide(-5.0, 0.0, 0.0);
+            break;
+        case CAMERA_SLIDE_RIGHT:
+            camera.slide(5.0, 0.0, 0.0);
+            break;
+        case CAMERA_PITCH_UP:
+            camera.pitch(-15.0);
+            break;
+        case CAMERA_PITCH_DOWN:
+            camera.pitch(15.0);
+            break;
+        case CAMERA_YAW_LEFT:
+            camera.yaw(15.0);
+            break;
+        case CAMERA_YAW_RIGHT:
+            camera.yaw(-15.0);
+            break;
+        case CAMERA_ROLL_LEFT:
+            camera.roll(-15.0);
+            break;
+        case CAMERA_ROLL_RIGHT:
+            camera.roll(15.0);
             break;
         default:
             break;
