@@ -177,7 +177,7 @@ int main(int argc, char** argv) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("Room And Table");
+    glutCreateWindow("3D Scene");
     init();								// initialise view
     glutMouseFunc(handleMouseClick);		// Set function to handle mouse clicks
     glutMotionFunc(handleMouseMotion);		// Set function to handle mouse motion
